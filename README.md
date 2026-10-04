@@ -1,67 +1,82 @@
 <div align="center">
   <img src="logo.png" alt="Ergodic Flashcards Logo" width="200" />
   <h1>Ergodic Flashcards</h1>
-  <p><em>Un sistema di Spaced Repetition (SRS) locale e autonomo, potenziato dall'IA multimodale.</em></p>
+  
+  <p>
+    <b>Un sistema di Spaced Repetition (SRS) locale e autonomo, potenziato dall'IA multimodale.</b>
+  </p>
+
+  <!-- Badges -->
+  <p>
+    <img src="https://img.shields.io/badge/Python-3.8+-blue.svg" alt="Python Version" />
+    <img src="https://img.shields.io/badge/Streamlit-App-FF4B4B.svg" alt="Streamlit" />
+    <img src="https://img.shields.io/badge/AI-Groq%20Vision-black.svg" alt="Groq Vision AI" />
+    <img src="https://img.shields.io/badge/Algorithm-SM--2-brightgreen.svg" alt="SM-2 Algorithm" />
+  </p>
 </div>
 
+<hr/>
+
+**Ergodic Flashcards** è un'applicazione open-source progettata per studenti e matematici (con focus su Teoria Ergodica e materie STEM) che permette di caricare appunti matematici scritti a mano in PDF e convertirli automaticamente in **flashcards (Domanda/Risposta)** scritte rigorosamente in **LaTeX**. 
+
+Costruita per aggirare le limitazioni e i login obbligatori di piattaforme web esterne (come AnkiWeb o Noji), l'app elabora, archivia e pianifica il tuo studio interamente **offline sul tuo computer** (fatta eccezione per la chiamata API velocissima verso Groq per l'estrazione visiva).
+
+<details>
+<summary>📋 <b>Indice</b></summary>
+
+- [✨ Funzionalità Principali](#-funzionalità-principali)
+- [🚀 Installazione Rapida](#-installazione-rapida)
+  - [Mac (macOS)](#-installazione-su-mac-macos)
+  - [Windows](#-installazione-su-windows)
+- [🔑 Configurazione API (Groq)](#-configurazione-della-api-key-di-groq)
+- [▶️ Come Utilizzarlo](#️-come-utilizzarlo)
+</details>
+
+## ✨ Funzionalità Principali
+
+- 🧠 **Vision AI Multimodale**: Sfrutta la potenza di *Qwen 3.8B 27B* (su infrastruttura Groq) per "leggere" la tua calligrafia e decodificare formule matematiche complesse.
+- 📝 **Supporto LaTeX Nativo**: Rendering perfetto delle tue formule matematiche. Addio copia-incolla manuale.
+- 🔁 **Studio Spaziato (SRS)**: Algoritmo *SuperMemo-2 (SM-2)* integrato per calcolare l'esatto momento in cui dovresti ripassare una determinata flashcard.
+- 🔒 **Privacy e Database Locale**: I tuoi progressi di studio vengono salvati in un database locale (`flashcards.json`).
+
 ---
 
-**Ergodic Flashcards** è un'applicazione progettata per studenti e matematici (con focus su Teoria Ergodica e materie STEM) che permette di caricare appunti matematici scritti a mano in PDF e convertirli automaticamente in **flashcards (Domanda/Risposta)** scritte in **LaTeX**. 
+## 🚀 Installazione Rapida
 
-L'app include un motore di ripasso spaziato (basato sull'algoritmo **SuperMemo-2**) che bypassa piattaforme web chiuse (come Noji o AnkiWeb), mantenendo database e file **100% in locale sul tuo computer**, garantendo efficienza, privacy e velocità.
-
-## ✨ Funzionalità
-- **Upload PDF Multimodale**: Carica i tuoi appunti e lascia che la Vision AI di **Groq (Qwen 3.8B 27B)** legga la tua calligrafia e le formule matematiche.
-- **Supporto LaTeX Nativo**: Tutte le flashcard sono generate e renderizzate perfettamente con il rendering matematico standard.
-- **Study Mode Locale**: Ripassa le tue carte ogni giorno senza login o abbonamenti web.
-
----
-
-## 🚀 Guida all'Installazione (Passo per Passo)
-
-Il progetto è costruito in Python ed esegue un'app Streamlit locale. Ecco come installarlo su **Mac** e su **Windows**.
-
-### Prerequisiti
-Assicurati di aver installato:
-- **Python 3.8+** (Scaricalo da python.org)
-- **Poppler** (Necessario per leggere i PDF, vedi istruzioni sotto)
+Per avviare l'app, avrai bisogno di Python 3.8+ e di **Poppler** (un tool di sistema essenziale per l'elaborazione dei file PDF).
 
 ### 🍎 Installazione su Mac (macOS)
-1. Apri il **Terminale**.
-2. Installa le librerie di sistema necessarie per processare i PDF:
+
+1. **Installa Poppler** dal Terminale (richiede [Homebrew](https://brew.sh/)):
    ```bash
    brew install poppler
    ```
-3. Clona questo repository ed entra nella cartella:
+2. **Clona la repository**:
    ```bash
    git clone https://github.com/emanuelediluzio/ergodic-flashcards.git
    cd ergodic-flashcards
    ```
-4. Crea un ambiente virtuale e attivalo:
+3. **Crea l'ambiente virtuale e installa le dipendenze**:
    ```bash
    python3 -m venv venv
    source venv/bin/activate
-   ```
-5. Installa i pacchetti Python richiesti:
-   ```bash
    pip install -r requirements.txt
    ```
 
 ### 🪟 Installazione su Windows
-1. Apri **PowerShell** o il **Prompt dei comandi**.
-2. Scarica e installa Poppler per Windows (puoi usare [Conda](https://docs.conda.io/) con `conda install -c conda-forge poppler` oppure scaricare i binari manualmente e aggiungerli alle Variabili d'Ambiente PATH).
-3. Clona questo repository ed entra nella cartella:
+
+1. **Installa Poppler**:
+   - Il metodo più semplice è usare [Conda](https://docs.conda.io/): `conda install -c conda-forge poppler`
+   - *In alternativa*, scarica l'eseguibile di [Poppler per Windows](http://blog.alivate.com.au/poppler-windows/) e aggiungi la cartella `bin/` alle variabili d'ambiente `PATH`.
+2. **Clona la repository** in PowerShell o CMD:
    ```cmd
    git clone https://github.com/emanuelediluzio/ergodic-flashcards.git
    cd ergodic-flashcards
    ```
-4. Crea un ambiente virtuale e attivalo:
+3. **Crea l'ambiente virtuale e installa le dipendenze**:
    ```cmd
    python -m venv venv
    venv\Scripts\activate
-   ```
-5. Installa i pacchetti Python richiesti:
-   ```cmd
    pip install -r requirements.txt
    ```
 
@@ -69,7 +84,7 @@ Assicurati di aver installato:
 
 ## 🔑 Configurazione della API Key di Groq
 
-Per funzionare, l'estrattore IA ha bisogno di chiamare il modello visivo di Groq. Attualmente, il codice è testato e impostato di default con una chiave fornita nel codice (`gsk_...`), ma è **fortemente consigliato** impostarla come Variabile d'Ambiente per sicurezza e per poterla cambiare in futuro.
+L'app richiede una chiave API per l'estrazione IA. Per non lasciare chiavi in chiaro nel codice sorgente, l'app legge la variabile d'ambiente `GROQ_API_KEY`.
 
 **Su Mac / Linux:**
 ```bash
@@ -81,22 +96,25 @@ export GROQ_API_KEY="la_tua_chiave_api_gsk_..."
 $env:GROQ_API_KEY="la_tua_chiave_api_gsk_..."
 ```
 
-*(In alternativa, puoi creare un file `.env` o modificare direttamente la variabile `api_key` nel file `llm_generator.py` alla riga 9 se il progetto è solo per uso privato e non caricato pubblicamente).*
+*(Se stai usando l'app in locale, puoi anche creare un file `.env` o inserirla nel tuo file di profilo di sistema `~/.bashrc` / `~/.zshrc`).*
 
 ---
 
-## ▶️ Come Avviare l'Applicazione
+## ▶️ Come Utilizzarlo
 
-Una volta completati i passaggi precedenti, avvia l'app assicurandoti che l'ambiente virtuale sia attivo:
+Una volta configurato l'ambiente, avvia l'interfaccia grafica:
 
 ```bash
 streamlit run app.py
 ```
 
-Si aprirà automaticamente il tuo browser predefinito all'indirizzo `http://localhost:8501`. 
+Si aprirà in automatico il tuo browser su `http://localhost:8501`. 
 
-### Come si usa:
-1. Vai nel menu **"Generate Flashcards"**.
-2. Trascina il tuo PDF degli appunti.
-3. Attendi i pochi secondi dell'estrazione (vedrai i palloncini di successo).
-4. Vai nel menu **"Study"** e inizia il tuo ripasso spaziato (valutando le risposte da *0 - Blackout* a *5 - Easy*).
+1. **Genera**: Vai nella sezione *"Generate Flashcards"* e carica il PDF con i tuoi appunti.
+2. **Attendi**: L'IA analizzerà il testo in pochi secondi.
+3. **Studia**: Spostati nella sezione *"Study"* per ripassare le tue carte, fornendo un feedback da *0 (Blackout)* a *5 (Facile)* per addestrare l'algoritmo di Spaced Repetition sui tuoi ritmi di apprendimento.
+
+<br>
+<p align="center">
+  <i>Costruito per studiare meglio, non per studiare di più.</i>
+</p>
